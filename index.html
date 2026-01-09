@@ -11,7 +11,7 @@ body{
   margin:0;
   font-family:"Segoe UI", Arial, sans-serif;
   color:#f0f0f0;
-  background:#0b1e3a; /* Dark Blue Background */
+  background:#112240; /* Slightly different dark blue */
   overflow-x:hidden;
 }
 
@@ -21,16 +21,15 @@ body{
   inset:0;
   z-index:-1;
   pointer-events:none;
-  transform:translateZ(0);
 }
 
 /* Navbar */
 .site-header{
   position:sticky;
   top:0;
-  background:rgba(11,30,58,0.95);
-  backdrop-filter:blur(6px);
-  box-shadow:0 4px 20px rgba(0,0,0,.8);
+  background:rgba(17,34,64,0.95);
+  backdrop-filter:blur(8px);
+  box-shadow:0 5px 25px rgba(0,0,0,.8);
 }
 .header-inner{
   max-width:1200px;
@@ -43,23 +42,23 @@ body{
 .full-name{
   font-size:24px;
   font-weight:700;
-  color:#7dd3fc; /* Light Blue */
+  color:#56b6c2; /* Changed accent color */
 }
 .sub-meta{
   font-size:14px;
-  color:#a5b4fc;
+  color:#7dd3fc;
 }
 .nav-links{
   list-style:none;
   display:flex;
-  gap:10px;
+  gap:12px;
   margin:0;
   padding:0;
 }
 .nav-links a{
   padding:8px 16px;
-  border-radius:20px;
-  background:#1e3a5f;
+  border-radius:18px;
+  background:#1a2a44;
   color:#f0f0f0;
   font-weight:600;
   transition:.3s;
@@ -67,22 +66,22 @@ body{
 }
 .nav-links a:hover,
 .nav-links a.active{
-  background:#38bdf8;
-  color:#0b1e3a;
+  background:#56b6c2;
+  color:#112240;
 }
 
 /* Hero */
 .hero{
-  padding:90px 20px 60px;
+  padding:80px 20px 60px;
   text-align:center;
 }
 .hero h1{
-  font-size:42px;
-  color:#e0f2fe;
+  font-size:40px;
+  color:#a0e7e5;
 }
 .hero p{
-  color:#bae6fd;
-  font-size:17px;
+  color:#bcdfff;
+  font-size:16px;
 }
 
 /* Content */
@@ -95,24 +94,29 @@ body{
   text-align:center;
   font-size:30px;
   margin-bottom:30px;
-  color:#7dd3fc;
+  color:#56b6c2;
 }
 
-/* Cards */
+/* Cards with slight gradient and hover effect */
 .card-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
   gap:25px;
 }
 .card{
-  background:#0b1e3a;
-  border:1px solid #1e3a5f;
+  background:linear-gradient(145deg, #112240, #0a1b33);
+  border:1px solid #2c3e50;
   border-radius:16px;
   padding:24px;
-  box-shadow:0 10px 30px rgba(0,0,0,.8);
+  box-shadow:0 8px 25px rgba(0,0,0,.7);
+  transition: transform .3s, box-shadow .3s;
+}
+.card:hover{
+  transform: translateY(-5px);
+  box-shadow:0 15px 35px rgba(0,0,0,.9);
 }
 .card h3{
-  color:#38bdf8;
+  color:#56b6c2;
 }
 .card p{
   font-size:15px;
@@ -122,10 +126,10 @@ body{
 /* Subject box */
 .subject-box{
   margin-top:40px;
-  border:1px solid #38bdf8;
+  border:1px solid #56b6c2;
   border-radius:18px;
   padding:30px;
-  background:#0b1e3a;
+  background:linear-gradient(145deg, #112240, #0a1b33);
 }
 .subject-box h3{
   color:#7dd3fc;
@@ -135,8 +139,8 @@ body{
 footer{
   text-align:center;
   padding:25px;
-  color:#a5b4fc;
-  border-top:1px solid #1e3a5f;
+  color:#7dd3fc;
+  border-top:1px solid #2c3e50;
 }
 </style>
 </head>
@@ -237,38 +241,59 @@ footer{
   KLE Technological University
 </footer>
 
-<!-- BACKGROUND ANIMATION -->
+<!-- BACKGROUND ANIMATION WITH LINES -->
 <script>
 const canvas = document.getElementById("bg-canvas");
 const ctx = canvas.getContext("2d");
 
+let width, height;
 function resize(){
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  width = canvas.width = window.innerWidth;
+  height = canvas.height = window.innerHeight;
 }
 resize();
 window.addEventListener("resize", resize);
 
-const dots = Array.from({length:80}, () => ({
-  x: Math.random()*canvas.width,
-  y: Math.random()*canvas.height,
-  r: Math.random()*2 + 1,
-  vx: (Math.random()-0.5)*0.6,
-  vy: (Math.random()-0.5)*0.6
+const points = Array.from({length:60}, () => ({
+  x: Math.random()*width,
+  y: Math.random()*height,
+  vx: (Math.random()-0.5)*1,
+  vy: (Math.random()-0.5)*1
 }));
 
 function animate(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  dots.forEach(d=>{
-    d.x+=d.vx;
-    d.y+=d.vy;
-    if(d.x<0||d.x>canvas.width) d.vx*=-1;
-    if(d.y<0||d.y>canvas.height) d.vy*=-1;
+  ctx.clearRect(0,0,width,height);
+
+  // Draw points
+  points.forEach(p => {
+    p.x += p.vx;
+    p.y += p.vy;
+    if(p.x<0||p.x>width) p.vx*=-1;
+    if(p.y<0||p.y>height) p.vy*=-1;
+
     ctx.beginPath();
-    ctx.arc(d.x,d.y,d.r,0,Math.PI*2);
-    ctx.fillStyle="rgba(56,189,248,0.85)";
+    ctx.arc(p.x,p.y,2,0,Math.PI*2);
+    ctx.fillStyle="rgba(86,182,194,0.9)";
     ctx.fill();
   });
+
+  // Draw connecting lines
+  for(let i=0;i<points.length;i++){
+    for(let j=i+1;j<points.length;j++){
+      const dx = points[i].x - points[j].x;
+      const dy = points[i].y - points[j].y;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      if(dist < 120){
+        ctx.beginPath();
+        ctx.moveTo(points[i].x, points[i].y);
+        ctx.lineTo(points[j].x, points[j].y);
+        ctx.strokeStyle = `rgba(86,182,194,${1-dist/120})`;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+    }
+  }
+
   requestAnimationFrame(animate);
 }
 animate();
