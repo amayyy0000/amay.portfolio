@@ -11,7 +11,7 @@ body{
   margin:0;
   font-family:"Segoe UI", Arial, sans-serif;
   color:#f0f0f0;
-  background:#112240; /* Slightly different dark blue */
+  background:#112240; /* Dark Blue Background */
   overflow-x:hidden;
 }
 
@@ -42,7 +42,7 @@ body{
 .full-name{
   font-size:24px;
   font-weight:700;
-  color:#56b6c2; /* Changed accent color */
+  color:#56b6c2; 
 }
 .sub-meta{
   font-size:14px;
@@ -70,25 +70,55 @@ body{
   color:#112240;
 }
 
-/* Hero */
+/* Hero two-column */
 .hero{
-  padding:80px 20px 60px;
-  text-align:center;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  padding:60px 20px;
+  max-width:1200px;
+  margin:auto;
+  gap:40px;
 }
-.hero h1{
+.hero-text{
+  flex:1;
+}
+.hero-text h1{
   font-size:40px;
   color:#a0e7e5;
+  margin-bottom:10px;
 }
-.hero p{
+.hero-text p{
   color:#bcdfff;
   font-size:16px;
+  margin:6px 0;
+}
+.hero-card{
+  flex:1;
+  background:linear-gradient(135deg,#0a1b33,#112240);
+  border:1px solid #2c3e50;
+  border-radius:20px;
+  padding:25px;
+  text-align:center;
+  box-shadow:0 10px 25px rgba(0,0,0,0.7);
+}
+.hero-card h3{
+  color:#56b6c2;
+  margin-bottom:10px;
+}
+.hero-card p{
+  font-size:14px;
+  color:#f0f0f0;
 }
 
-/* Content */
+/* Content Sections */
 .container{
   max-width:1100px;
   margin:auto;
   padding:40px 20px;
+}
+.section{
+  margin-bottom:40px;
 }
 .section h2{
   text-align:center;
@@ -97,22 +127,25 @@ body{
   color:#56b6c2;
 }
 
-/* Cards with slight gradient and hover effect */
+/* Alternating cards */
 .card-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
   gap:25px;
 }
 .card{
-  background:linear-gradient(145deg, #112240, #0a1b33);
+  background:linear-gradient(145deg,#112240,#0a1b33);
   border:1px solid #2c3e50;
   border-radius:16px;
   padding:24px;
   box-shadow:0 8px 25px rgba(0,0,0,.7);
   transition: transform .3s, box-shadow .3s;
 }
+.card:nth-child(even){
+  background:linear-gradient(145deg,#0a1b33,#112240);
+}
 .card:hover{
-  transform: translateY(-5px);
+  transform: translateY(-5px) rotate(-1deg);
   box-shadow:0 15px 35px rgba(0,0,0,.9);
 }
 .card h3{
@@ -129,7 +162,7 @@ body{
   border:1px solid #56b6c2;
   border-radius:18px;
   padding:30px;
-  background:linear-gradient(145deg, #112240, #0a1b33);
+  background:linear-gradient(145deg,#112240,#0a1b33);
 }
 .subject-box h3{
   color:#7dd3fc;
@@ -170,11 +203,18 @@ footer{
 
 <!-- HERO -->
 <section class="hero">
-  <h1>Fundamentals of Probability & Statistics</h1>
-  <p><strong>Subject Code:</strong> 25EMAB233</p>
-  <p><strong>USN:</strong> 01FE25BCI711 | <strong>Roll No:</strong> 258</p>
-  <p>KLE Technological University • 2025–26</p>
-  <p><strong>Under the Academic Guidance of:</strong> Dr. Gururaj Bhadri</p>
+  <div class="hero-text">
+    <h1>Fundamentals of Probability & Statistics</h1>
+    <p><strong>Subject Code:</strong> 25EMAB233</p>
+    <p><strong>USN:</strong> 01FE25BCI711 | <strong>Roll No:</strong> 258</p>
+    <p>KLE Technological University • 2025–26</p>
+    <p><strong>Under the Academic Guidance of:</strong> Dr. Gururaj Bhadri</p>
+  </div>
+  <div class="hero-card">
+    <h3>Welcome!</h3>
+    <p>This project explores Probability & Statistics through examples and applications in real life.</p>
+    <p>Designed to give practical insights while completing academic coursework.</p>
+  </div>
 </section>
 
 <!-- INTRODUCTION -->
@@ -186,16 +226,15 @@ footer{
     <div class="card">
       <h3>Student</h3>
       <p>
-        I am <b>Amay G Navalgundmath</b>, a 3rd semester undergraduate student at
-        <b>KLE Technological University</b>. This project is developed as part
-        of the academic coursework for the subject
-        <b>Fundamentals of Probability and Statistics</b>.
+        Hello! I’m <b>Amay G Navalgundmath</b>, 3rd semester student at
+        <b>KLE Technological University</b>. This project explains
+        Probability and Statistics in practical ways.
       </p>
       <p><strong>USN:</strong> 01FE25BCI711 | <strong>Roll No:</strong> 258</p>
     </div>
 
     <div class="card">
-      <h3>Under the Guidance of</h3>
+      <h3>Under Guidance</h3>
       <p>
         <b>Dr. Gururaj Bhadri</b><br>
         KLE Technological University
@@ -203,34 +242,28 @@ footer{
     </div>
 
     <div class="card">
-      <h3>Subject</h3>
+      <h3>Subject Overview</h3>
       <p>
-        <b>Probability</b> deals with measuring uncertainty and predicting
-        the likelihood of events.
+        <b>Probability</b> measures the chance of events happening in uncertain situations.
       </p>
       <p>
-        <b>Statistics</b> deals with collecting, organizing, analyzing,
-        and interpreting data to make decisions.
+        <b>Statistics</b> organizes, analyzes, and interprets data to help make informed decisions.
       </p>
     </div>
 
     <div class="card">
-      <h3>Real-World Applicability</h3>
+      <h3>Applications</h3>
       <p>
-        Probability and Statistics are applied in engineering design,
-        quality control, data science, machine learning, finance,
-        medical research, and scientific experiments.
+        Used in engineering, data science, machine learning, finance, quality control, and scientific experiments.
       </p>
     </div>
 
   </div>
 
   <div class="subject-box">
-    <h3>What does Probability & Statistics mean?</h3>
+    <h3>What is Probability & Statistics?</h3>
     <p>
-      Probability predicts outcomes in uncertain situations, while
-      statistics explains patterns found in data. Together, they form
-      the foundation of analytical thinking and evidence-based decision making.
+      Probability predicts uncertain outcomes, while Statistics explains patterns in data. Combined, they enable analytical thinking and evidence-based decisions.
     </p>
   </div>
 
@@ -264,7 +297,6 @@ const points = Array.from({length:60}, () => ({
 function animate(){
   ctx.clearRect(0,0,width,height);
 
-  // Draw points
   points.forEach(p => {
     p.x += p.vx;
     p.y += p.vy;
@@ -277,7 +309,6 @@ function animate(){
     ctx.fill();
   });
 
-  // Draw connecting lines
   for(let i=0;i<points.length;i++){
     for(let j=i+1;j<points.length;j++){
       const dx = points[i].x - points[j].x;
