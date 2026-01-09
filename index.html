@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Amay G Navalgundmath | Probability & Statistics</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:"Segoe UI", Arial, sans-serif;
+  color:#f0f0f0;
+  background:#0b1e3a; /* Dark Blue Background */
+  overflow-x:hidden;
+}
+
+/* Animated background */
+#bg-canvas{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  transform:translateZ(0);
+}
+
+/* Navbar */
+.site-header{
+  position:sticky;
+  top:0;
+  background:rgba(11,30,58,0.95);
+  backdrop-filter:blur(6px);
+  box-shadow:0 4px 20px rgba(0,0,0,.8);
+}
+.header-inner{
+  max-width:1200px;
+  margin:auto;
+  padding:14px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.full-name{
+  font-size:24px;
+  font-weight:700;
+  color:#7dd3fc; /* Light Blue */
+}
+.sub-meta{
+  font-size:14px;
+  color:#a5b4fc;
+}
+.nav-links{
+  list-style:none;
+  display:flex;
+  gap:10px;
+  margin:0;
+  padding:0;
+}
+.nav-links a{
+  padding:8px 16px;
+  border-radius:20px;
+  background:#1e3a5f;
+  color:#f0f0f0;
+  font-weight:600;
+  transition:.3s;
+  text-decoration:none;
+}
+.nav-links a:hover,
+.nav-links a.active{
+  background:#38bdf8;
+  color:#0b1e3a;
+}
+
+/* Hero */
+.hero{
+  padding:90px 20px 60px;
+  text-align:center;
+}
+.hero h1{
+  font-size:42px;
+  color:#e0f2fe;
+}
+.hero p{
+  color:#bae6fd;
+  font-size:17px;
+}
+
+/* Content */
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:40px 20px;
+}
+.section h2{
+  text-align:center;
+  font-size:30px;
+  margin-bottom:30px;
+  color:#7dd3fc;
+}
+
+/* Cards */
+.card-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:25px;
+}
+.card{
+  background:#0b1e3a;
+  border:1px solid #1e3a5f;
+  border-radius:16px;
+  padding:24px;
+  box-shadow:0 10px 30px rgba(0,0,0,.8);
+}
+.card h3{
+  color:#38bdf8;
+}
+.card p{
+  font-size:15px;
+  color:#f0f0f0;
+}
+
+/* Subject box */
+.subject-box{
+  margin-top:40px;
+  border:1px solid #38bdf8;
+  border-radius:18px;
+  padding:30px;
+  background:#0b1e3a;
+}
+.subject-box h3{
+  color:#7dd3fc;
+}
+
+/* Footer */
+footer{
+  text-align:center;
+  padding:25px;
+  color:#a5b4fc;
+  border-top:1px solid #1e3a5f;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="bg-canvas"></canvas>
+
+<!-- NAVBAR -->
+<header class="site-header">
+  <div class="header-inner">
+    <div>
+      <div class="full-name">Amay G Navalgundmath</div>
+      <div class="sub-meta">
+        USN: 01FE25BCI711 | Roll No: 258 | KLE Technological University
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a class="active" href="index.html">Home</a></li>
+      <li><a href="chapter1.html">Chapter 1</a></li>
+      <li><a href="chapter2.html">Chapter 2</a></li>
+      <li><a href="chapter3.html">Chapter 3</a></li>
+      <li><a href="chapter4.html">Chapter 4</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Fundamentals of Probability & Statistics</h1>
+  <p><strong>Subject Code:</strong> 25EMAB233</p>
+  <p><strong>USN:</strong> 01FE25BCI711 | <strong>Roll No:</strong> 258</p>
+  <p>KLE Technological University • 2025–26</p>
+  <p><strong>Under the Academic Guidance of:</strong> Dr. Gururaj Bhadri</p>
+</section>
+
+<!-- INTRODUCTION -->
+<section class="container section">
+  <h2>Introduction</h2>
+
+  <div class="card-grid">
+
+    <div class="card">
+      <h3>Student</h3>
+      <p>
+        I am <b>Amay G Navalgundmath</b>, a 3rd semester undergraduate student at
+        <b>KLE Technological University</b>. This project is developed as part
+        of the academic coursework for the subject
+        <b>Fundamentals of Probability and Statistics</b>.
+      </p>
+      <p><strong>USN:</strong> 01FE25BCI711 | <strong>Roll No:</strong> 258</p>
+    </div>
+
+    <div class="card">
+      <h3>Under the Guidance of</h3>
+      <p>
+        <b>Dr. Gururaj Bhadri</b><br>
+        KLE Technological University
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Subject</h3>
+      <p>
+        <b>Probability</b> deals with measuring uncertainty and predicting
+        the likelihood of events.
+      </p>
+      <p>
+        <b>Statistics</b> deals with collecting, organizing, analyzing,
+        and interpreting data to make decisions.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Real-World Applicability</h3>
+      <p>
+        Probability and Statistics are applied in engineering design,
+        quality control, data science, machine learning, finance,
+        medical research, and scientific experiments.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="subject-box">
+    <h3>What does Probability & Statistics mean?</h3>
+    <p>
+      Probability predicts outcomes in uncertain situations, while
+      statistics explains patterns found in data. Together, they form
+      the foundation of analytical thinking and evidence-based decision making.
+    </p>
+  </div>
+
+</section>
+
+<footer>
+  © 2025–2026 | Amay G Navalgundmath | Probability & Statistics |
+  KLE Technological University
+</footer>
+
+<!-- BACKGROUND ANIMATION -->
+<script>
+const canvas = document.getElementById("bg-canvas");
+const ctx = canvas.getContext("2d");
+
+function resize(){
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener("resize", resize);
+
+const dots = Array.from({length:80}, () => ({
+  x: Math.random()*canvas.width,
+  y: Math.random()*canvas.height,
+  r: Math.random()*2 + 1,
+  vx: (Math.random()-0.5)*0.6,
+  vy: (Math.random()-0.5)*0.6
+}));
+
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  dots.forEach(d=>{
+    d.x+=d.vx;
+    d.y+=d.vy;
+    if(d.x<0||d.x>canvas.width) d.vx*=-1;
+    if(d.y<0||d.y>canvas.height) d.vy*=-1;
+    ctx.beginPath();
+    ctx.arc(d.x,d.y,d.r,0,Math.PI*2);
+    ctx.fillStyle="rgba(56,189,248,0.85)";
+    ctx.fill();
+  });
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+</body>
+</html>
