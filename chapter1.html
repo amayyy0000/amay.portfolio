@@ -1,204 +1,369 @@
-<!DOCTYPE html>
+```html
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<title>Chapter 1 – Description of Data</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <title>Chapter 1 – Description of Data</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-<style>
+  <style>
 :root{
-  --card:rgba(255,255,255,0.06);
-  --border:rgba(255,255,255,0.14);
-  --accent1:#06b6d4;
-  --accent2:#7c3aed;
-  --accent3:#f472b6;
-  --text:#e6eef8;
-  --muted:#cbd5e1;
-  --bg1:#04263a;
-  --bg2:#0b1b3a;
+  --card:rgba(255,255,255,0.08);
+  --border:rgba(255,255,255,0.18);
+  --blue:#38bdf8;
+  --violet:#a78bfa;
+  --pink:#f472b6;
+  --text:#e5e7eb;
+  --accent:#60a5fa;
 }
 *{box-sizing:border-box}
 html,body{margin:0;min-height:100%}
 body{
   font-family:'Poppins',sans-serif;
-  background: linear-gradient(180deg,var(--bg1),var(--bg2));
+  background:#020617;
   color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
 }
-canvas#statsBG{position:fixed;inset:0;z-index:-2}
+
+/* Background canvas + overlay */
+canvas#statsBG{position:fixed;inset:0;z-index:-2;display:block}
 .bg-overlay{
   position:fixed;inset:0;
   background:
-    radial-gradient(circle at 10% 20%, rgba(6,182,212,0.06), transparent 40%),
-    radial-gradient(circle at 90% 80%, rgba(124,58,237,0.06), transparent 40%);
+    radial-gradient(circle at 15% 20%, rgba(56,189,248,.10), transparent 55%),
+    radial-gradient(circle at 85% 75%, rgba(167,139,250,.10), transparent 55%);
   z-index:-1;
 }
-section{max-width:1200px;margin:auto;padding:36px 20px}
+
+/* Page layout */
+.container { max-width:1300px; margin:0 auto; padding:40px 28px 80px; }
+.header-row { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:18px; flex-wrap:wrap; }
+.title-wrap { flex:1 1 auto; text-align:center; min-width:220px; }
 h1{
-  text-align:center;font-size:34px;margin-bottom:18px;
-  background:linear-gradient(90deg,var(--accent1),var(--accent2),var(--accent3));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  margin:0;
+  font-size:36px;
+  background:linear-gradient(90deg,var(--blue),var(--violet),var(--pink));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
+
+/* Large Home button */
+.home-button {
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background: linear-gradient(90deg,var(--blue),var(--violet));
+  color:#021025;
+  font-weight:700;
+  padding:12px 18px;
+  border-radius:12px;
+  text-decoration:none;
+  box-shadow: 0 10px 30px rgba(56,189,248,0.08);
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: transform .12s ease, box-shadow .12s ease;
+  white-space:nowrap;
+}
+.home-button:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(56,189,248,0.12); }
+
+/* Navigation bar */
+.main-nav {
+  display:flex;
+  gap:10px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.main-nav a {
+  color:#cfe3ff;
+  text-decoration:none;
+  padding:8px 12px;
+  border-radius:10px;
+  font-weight:600;
+  background: transparent;
+  border: 1px solid transparent;
+}
+.main-nav a:hover {
+  background: rgba(255,255,255,0.03);
+  border-color: rgba(255,255,255,0.04);
+  color:#fff;
+}
+
+/* Cards */
 .card{
   background:var(--card);
   border:1px solid var(--border);
-  border-radius:14px;
-  padding:18px;
-  margin-bottom:18px;
+  border-radius:18px;
+  padding:24px;
+  margin-bottom:26px;
 }
-.card h3{margin:0 0 8px}
-p,li{font-size:15px;line-height:1.6;color:var(--muted)}
-.details-list li{margin:6px 0}
-.formula{font-family:monospace;color:#dbeafe;font-size:14px}
-.small{font-size:13px;color:#bcd3ea}
-.footer{text-align:center;font-size:13px;color:#9fb6d0;margin-top:20px}
-a{color:var(--accent1);text-decoration:none;font-weight:600}
-</style>
+.card h3{margin:0 0 8px;color:#eaf6ff}
+p,li{font-size:15.5px;line-height:1.7;color:#dbeafe}
+details{
+  margin-top:12px;
+  padding:12px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,0.03);
+}
+summary{cursor:pointer;font-weight:600;color:var(--blue)}
+.graph{margin-top:12px}
+.formula{white-space:pre-wrap}
+
+/* Footer small link */
+.footer-row { text-align:center; margin-top:18px; color:#9fb0c8; font-size:0.95rem; }
+
+/* Responsive */
+@media (max-width:880px) {
+  .header-row { flex-direction:column; gap:12px; align-items:stretch; }
+  .home-button { width:100%; justify-content:center; padding:12px 16px; }
+  .main-nav { justify-content:center; }
+  h1 { font-size:28px; }
+  .container { padding:28px 18px 60px; }
+}
+  </style>
 </head>
 
 <body>
-<canvas id="statsBG"></canvas>
-<div class="bg-overlay"></div>
+  <canvas id="statsBG" aria-hidden="true"></canvas>
+  <div class="bg-overlay" aria-hidden="true"></div>
 
-<section>
+  <div class="container">
+    <div class="header-row" role="banner">
+      <div style="flex:0 0 auto;">
+        <a class="home-button" href="index.html" aria-label="Back to Home">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 10.5L12 4l9 6.5" stroke="#021025" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M5 21V11.5l7-4.5 7 4.5V21" stroke="#021025" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Back to Home
+        </a>
+      </div>
 
-<!-- LINK TO INDEX -->
-<div class="card">
-  <a href="index.html">← Back to Home</a>
-</div>
+      <div class="title-wrap">
+        <h1>Chapter 1 · Description of Data</h1>
+      </div>
 
-<h1>Chapter 1 · Description of Data</h1>
+      <nav class="main-nav" aria-label="Site navigation">
+        <a href="chapter1.html">Chapter 1</a>
+        <a href="chapter2.html">Chapter 2</a>
+        <a href="chapter3.html">Chapter 3</a>
+        <a href="chapter4.html">Chapter 4</a>
+        <a href="lab1.html">Lab 1</a>
+        <a href="lab2.html">Lab 2</a>
+        <a href="index.html">Index</a>
+      </nav>
+    </div>
 
-<div class="card">
-  <h3>Introduction</h3>
-  <p>
-    Descriptive statistics deals with organizing, summarizing, and presenting data
-    to make information meaningful and easy to understand.
-  </p>
-</div>
+    <div class="card">
+      <h3>Introduction</h3>
+      <p>
+        Descriptive statistics focuses on organizing, summarizing and presenting data in a meaningful form.
+        It uses numerical measures and graphical methods to understand data clearly.
+      </p>
+    </div>
 
-<div class="card">
-  <h3>Types of Data</h3>
-  <ul class="details-list">
-    <li><strong>Qualitative (Categorical):</strong> Nominal, Ordinal</li>
-    <li><strong>Quantitative:</strong> Discrete, Continuous</li>
-    <li><strong>Binary:</strong> Only two outcomes (Yes/No)</li>
-    <li><strong>Time Series:</strong> Data collected over time</li>
-    <li><strong>Cross-Sectional:</strong> Data collected at one time</li>
-  </ul>
-</div>
+    <div class="card">
+      <h3>Types of Data</h3>
+      <p>
+        Data are classified based on their nature into qualitative and quantitative data.
+        This classification helps decide suitable statistical methods.
+      </p>
 
-<div class="card">
-  <h3>Frequency Distribution</h3>
-  <p class="small">Example of grouped data:</p>
-  <div class="formula">
-10–19 : 4  
-20–29 : 7  
-30–39 : 9  
-40–49 : 5
+      <details>
+        <summary>Click to expand</summary>
+        <div class="formula">
+Qualitative (Categorical)
+• Nominal – no order
+• Ordinal – ordered categories
+
+Quantitative
+• Discrete – countable
+• Continuous – measurable
+
+Examples:
+Nominal: Blood group
+Ordinal: Rank
+Discrete: Number of students
+Continuous: Height
+        </div>
+      </details>
+    </div>
+
+    <div class="card">
+      <h3>Measures of Central Tendency</h3>
+      <p>
+        These measures describe the central or typical value of a dataset.
+        Mean, median and mode are the most commonly used measures.
+      </p>
+
+      <details>
+        <summary>Click to expand</summary>
+        <div class="formula">
+Mean (ungrouped): x̄ = Σx / n
+Median (grouped): l + [(N/2 − cf)/f] × h
+Mode (grouped): l + [(f₁ − f₀)/(2f₁ − f₀ − f₂)] × h
+
+Example:
+10, 20, 30, 40, 50 → Mean = 30
+        </div>
+      </details>
+    </div>
+
+    <div class="card">
+      <h3>Measures of Dispersion</h3>
+      <p>
+        Dispersion shows how far data values spread around the central value.
+        It indicates consistency or variability in data.
+      </p>
+
+      <details>
+        <summary>Click to expand</summary>
+        <div class="formula">
+Range = Max − Min
+Variance: s² = Σ(x − x̄)² / (n − 1)
+Standard Deviation: s = √s²
+
+Example:
+Data: 5, 7, 9 → SD = 2
+        </div>
+      </details>
+    </div>
+
+    <div class="card">
+      <h3>Histogram</h3>
+      <p>
+        A histogram represents frequency distribution of continuous data using adjacent bars.
+        The height of each bar shows frequency.
+      </p>
+
+      <div class="graph" role="img" aria-label="Example histogram">
+        <svg viewBox="0 0 700 300" width="100%" height="auto" preserveAspectRatio="xMidYMid meet">
+          <line x1="60" y1="250" x2="660" y2="250" stroke="#cfe8ff"/>
+          <line x1="60" y1="40" x2="60" y2="250" stroke="#cfe8ff"/>
+          <rect x="100" y="200" width="80" height="50" fill="#38bdf8"/>
+          <rect x="200" y="170" width="80" height="80" fill="#a78bfa"/>
+          <rect x="300" y="130" width="80" height="120" fill="#f472b6"/>
+          <rect x="400" y="160" width="80" height="90" fill="#60a5fa"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Ogive</h3>
+      <p>
+        An ogive is a cumulative frequency curve.
+        It is used to find median, quartiles and percentiles.
+      </p>
+
+      <div class="graph" role="img" aria-label="Example ogive">
+        <svg viewBox="0 0 700 300" width="100%" height="auto" preserveAspectRatio="xMidYMid meet">
+          <line x1="60" y1="250" x2="660" y2="250" stroke="#cfe8ff"/>
+          <line x1="60" y1="40" x2="60" y2="250" stroke="#cfe8ff"/>
+          <polyline points="120,240 220,240 220,210 320,210 320,160 420,160 420,110"
+            fill="none" stroke="#f472b6" stroke-width="4"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Box Plot</h3>
+      <p>
+        A box plot represents data using five-number summary.
+        It helps detect spread and outliers.
+      </p>
+
+      <div class="graph" role="img" aria-label="Example box plot">
+        <svg viewBox="0 0 700 200" width="100%" height="auto" preserveAspectRatio="xMidYMid meet">
+          <line x1="100" y1="100" x2="600" y2="100" stroke="#cfe8ff"/>
+          <rect x="220" y="70" width="260" height="60" fill="#a78bfa"/>
+          <line x1="350" y1="70" x2="350" y2="130" stroke="#020617" stroke-width="3"/>
+          <line x1="140" y1="100" x2="220" y2="100" stroke="#cfe8ff"/>
+          <line x1="480" y1="100" x2="560" y2="100" stroke="#cfe8ff"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>What I Learned in This Chapter</h3>
+      <p>
+        I learned how data are classified, summarized using mean, median and mode,
+        measured for variability, and represented graphically using histogram, ogive and box plot.
+      </p>
+    </div>
+
+    <div class="footer-row">© Chapter 1 — Description of Data</div>
   </div>
-</div>
 
-<div class="card">
-  <h3>Measures of Central Tendency</h3>
-  <ul class="details-list">
-    <li><strong>Mean:</strong> Mean = (Sum of observations) / n</li>
-    <li><strong>Median:</strong> Middle value of ordered data</li>
-    <li><strong>Mode:</strong> Most frequent value</li>
-  </ul>
-  <p class="small">
-    Example: For 2, 4, 6, 8, 10 → Mean = 6, Median = 6, Mode = none
-  </p>
-</div>
+  <script>
+  // Safe background animation: checks for canvas and context before using them.
+  (function () {
+    const canvas = document.getElementById('statsBG');
+    if (!canvas) return; // if canvas not present, exit silently
+    const ctx = canvas.getContext && canvas.getContext('2d');
+    if (!ctx) return;
 
-<div class="card">
-  <h3>Measures of Dispersion</h3>
-  <ul class="details-list">
-    <li><strong>Range:</strong> Maximum − Minimum</li>
-    <li><strong>Variance (Sample):</strong></li>
-  </ul>
-  <div class="formula">
-s² = Σ(x − x̄)² / (n − 1)
-  </div>
-  <ul class="details-list">
-    <li><strong>Standard Deviation:</strong></li>
-  </ul>
-  <div class="formula">
-s = √s²
-  </div>
-  <p class="small">
-    Example: If variance = 16, standard deviation = 4
-  </p>
-</div>
+    // Resize handler
+    function resize() {
+      canvas.width = window.innerWidth || document.documentElement.clientWidth;
+      canvas.height = window.innerHeight || document.documentElement.clientHeight;
+    }
+    window.addEventListener('resize', resize, { passive: true });
+    resize();
 
-<div class="card">
-  <h3>Shape of Distribution</h3>
-  <ul class="details-list">
-    <li><strong>Symmetric:</strong> Mean = Median = Mode</li>
-    <li><strong>Positively Skewed:</strong> Mean > Median</li>
-    <li><strong>Negatively Skewed:</strong> Mean < Median</li>
-  </ul>
-</div>
+    // Create particles with positions and velocities
+    const particles = Array.from({ length: 90 }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: (Math.random() - 0.5) * 0.3
+    }));
 
-<div class="card">
-  <h3>Correlation</h3>
-  <p>
-    Correlation measures the strength and direction of linear relationship between two variables.
-  </p>
-  <div class="formula">
-−1 ≤ r ≤ +1
-  </div>
-</div>
+    let rafId = null;
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-<div class="card">
-  <h3>Graphical Representation</h3>
-  <ul class="details-list">
-    <li>Histogram – Frequency distribution</li>
-    <li>Ogive – Cumulative frequency</li>
-    <li>Box Plot – Spread and outliers</li>
-    <li>Scatter Plot – Relationship between variables</li>
-    <li>Pie Chart – Categorical proportions</li>
-  </ul>
-</div>
+      // draw subtle connecting lines
+      for (let i = 0; i < particles.length; i++) {
+        const pi = particles[i];
+        for (let j = i + 1; j < particles.length; j++) {
+          const pj = particles[j];
+          const dx = pi.x - pj.x;
+          const dy = pi.y - pj.y;
+          const dist = Math.hypot(dx, dy);
+          if (dist < 120) {
+            ctx.strokeStyle = 'rgba(160,180,255,0.06)';
+            ctx.beginPath();
+            ctx.moveTo(pi.x, pi.y);
+            ctx.lineTo(pj.x, pj.y);
+            ctx.stroke();
+          }
+        }
+      }
 
-<div class="card">
-  <h3>What I Learned</h3>
-  <p>
-    I learned how data is classified, summarized using averages and dispersion,
-    and visually represented using graphs for better interpretation.
-  </p>
-</div>
+      // update and draw particles
+      for (let p of particles) {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+        ctx.fillStyle = 'rgba(220,230,255,0.85)';
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+        ctx.fill();
+      }
 
-<div class="footer">
-  Chapter 1 – Description of Data | Linked with index.html
-</div>
+      rafId = requestAnimationFrame(draw);
+    }
 
-</section>
+    draw();
 
-<script>
-const c = document.getElementById("statsBG"), ctx = c.getContext("2d");
-function resize(){ c.width = innerWidth; c.height = innerHeight; }
-resize(); addEventListener("resize", resize);
-
-const pts=[...Array(70)].map(()=>({
-  x:Math.random()*c.width,
-  y:Math.random()*c.height,
-  vx:(Math.random()-.5)*0.4,
-  vy:(Math.random()-.5)*0.4
-}));
-
-(function loop(){
-  ctx.clearRect(0,0,c.width,c.height);
-  pts.forEach(p=>{
-    p.x+=p.vx; p.y+=p.vy;
-    if(p.x<0||p.x>c.width)p.vx*=-1;
-    if(p.y<0||p.y>c.height)p.vy*=-1;
-    ctx.fillStyle="rgba(6,182,212,0.8)";
-    ctx.beginPath(); ctx.arc(p.x,p.y,2,0,Math.PI*2); ctx.fill();
-  });
-  requestAnimationFrame(loop);
-})();
-</script>
-
+    // cleanup on unload
+    window.addEventListener('beforeunload', () => {
+      if (rafId) cancelAnimationFrame(rafId);
+    });
+  })();
+  </script>
 </body>
 </html>
+```
