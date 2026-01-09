@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Chapter 1 – Description of Data (Updated)</title>
+<title>Chapter 1 – Description of Data</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -10,9 +10,9 @@
 :root{
   --card:rgba(255,255,255,0.06);
   --border:rgba(255,255,255,0.14);
-  --accent1:#06b6d4; /* teal */
-  --accent2:#7c3aed; /* indigo */
-  --accent3:#f472b6; /* pink */
+  --accent1:#06b6d4;
+  --accent2:#7c3aed;
+  --accent3:#f472b6;
   --text:#e6eef8;
   --muted:#cbd5e1;
   --bg1:#04263a;
@@ -24,16 +24,13 @@ body{
   font-family:'Poppins',sans-serif;
   background: linear-gradient(180deg,var(--bg1),var(--bg2));
   color:var(--text);
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
 }
 canvas#statsBG{position:fixed;inset:0;z-index:-2}
 .bg-overlay{
   position:fixed;inset:0;
   background:
     radial-gradient(circle at 10% 20%, rgba(6,182,212,0.06), transparent 40%),
-    radial-gradient(circle at 90% 80%, rgba(124,58,237,0.06), transparent 40%),
-    linear-gradient(180deg, rgba(2,6,23,0.25), transparent 40%);
+    radial-gradient(circle at 90% 80%, rgba(124,58,237,0.06), transparent 40%);
   z-index:-1;
 }
 section{max-width:1200px;margin:auto;padding:36px 20px}
@@ -48,21 +45,14 @@ h1{
   border-radius:14px;
   padding:18px;
   margin-bottom:18px;
-  box-shadow: 0 6px 18px rgba(2,6,23,0.35);
 }
-.card h3{margin:0 0 8px;color:#eaf6ff}
-p,li{font-size:15px;line-height:1.6;color:var(--muted);margin:0}
-.details-list{margin-top:10px}
+.card h3{margin:0 0 8px}
+p,li{font-size:15px;line-height:1.6;color:var(--muted)}
 .details-list li{margin:6px 0}
-summary{cursor:pointer;font-weight:600;color:var(--accent1)}
-.formula{white-space:pre-wrap;color:#dbeafe;font-family:monospace;font-size:14px}
-.graph{margin-top:12px}
+.formula{font-family:monospace;color:#dbeafe;font-size:14px}
 .small{font-size:13px;color:#bcd3ea}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
-.note{font-size:13px;color:#9fb6d0;margin-top:8px}
-.legend{display:flex;gap:10px;align-items:center;margin-top:8px}
-.legend span{display:inline-block;width:12px;height:12px;border-radius:3px}
-.footer{font-size:13px;color:#9fb6d0;text-align:center;margin-top:18px}
+.footer{text-align:center;font-size:13px;color:#9fb6d0;margin-top:20px}
+a{color:var(--accent1);text-decoration:none;font-weight:600}
 </style>
 </head>
 
@@ -71,269 +61,141 @@ summary{cursor:pointer;font-weight:600;color:var(--accent1)}
 <div class="bg-overlay"></div>
 
 <section>
-<h1>Chapter 1 · Description of Data (Updated)</h1>
+
+<!-- LINK TO INDEX -->
+<div class="card">
+  <a href="index.html">← Back to Home</a>
+</div>
+
+<h1>Chapter 1 · Description of Data</h1>
 
 <div class="card">
   <h3>Introduction</h3>
   <p>
-    Descriptive statistics organizes, summarizes and presents data so patterns and features are easy to see.
-    This chapter adds concise topic cards and clearer visual examples for quick study.
+    Descriptive statistics deals with organizing, summarizing, and presenting data
+    to make information meaningful and easy to understand.
   </p>
 </div>
 
 <div class="card">
-  <h3>Types of Data (brief)</h3>
+  <h3>Types of Data</h3>
   <ul class="details-list">
-    <li><strong>Qualitative (Categorical):</strong> Nominal (no order), Ordinal (ordered)</li>
-    <li><strong>Quantitative:</strong> Discrete (counts), Continuous (measurements)</li>
-    <li><strong>Binary:</strong> Two possible values (yes/no)</li>
-    <li><strong>Time series:</strong> Observations ordered in time</li>
-    <li><strong>Cross-sectional:</strong> Observations at one point in time</li>
+    <li><strong>Qualitative (Categorical):</strong> Nominal, Ordinal</li>
+    <li><strong>Quantitative:</strong> Discrete, Continuous</li>
+    <li><strong>Binary:</strong> Only two outcomes (Yes/No)</li>
+    <li><strong>Time Series:</strong> Data collected over time</li>
+    <li><strong>Cross-Sectional:</strong> Data collected at one time</li>
   </ul>
 </div>
 
 <div class="card">
-  <h3>Data Collection & Cleaning (brief)</h3>
-  <ul class="details-list">
-    <li><strong>Sources:</strong> surveys, experiments, administrative records, sensors</li>
-    <li><strong>Sampling:</strong> random, stratified, cluster, convenience</li>
-    <li><strong>Cleaning:</strong> handle missing values, remove duplicates, correct errors</li>
-    <li><strong>Validation:</strong> check ranges, consistency, and outliers</li>
-  </ul>
+  <h3>Frequency Distribution</h3>
+  <p class="small">Example of grouped data:</p>
+  <div class="formula">
+10–19 : 4  
+20–29 : 7  
+30–39 : 9  
+40–49 : 5
+  </div>
 </div>
 
 <div class="card">
-  <h3>Frequency Distribution & Tables</h3>
-  <p class="small">Summarize data into classes or categories with counts and relative frequencies.</p>
-  <details>
-    <summary>Click to expand</summary>
-    <div class="formula">
-Class interval example:
-10–19 : 4; 20–29 : 7; 30–39 : 9; 40–49 : 5
-    </div>
-  </details>
+  <h3>Measures of Central Tendency</h3>
+  <ul class="details-list">
+    <li><strong>Mean:</strong> Mean = (Sum of observations) / n</li>
+    <li><strong>Median:</strong> Middle value of ordered data</li>
+    <li><strong>Mode:</strong> Most frequent value</li>
+  </ul>
+  <p class="small">
+    Example: For 2, 4, 6, 8, 10 → Mean = 6, Median = 6, Mode = none
+  </p>
 </div>
 
 <div class="card">
-  <h3>Measures of Central Tendency (brief)</h3>
+  <h3>Measures of Dispersion</h3>
   <ul class="details-list">
-    <li><strong>Mean:</strong> arithmetic average</li>
-    <li><strong>Median:</strong> middle value (robust to outliers)</li>
-    <li><strong>Mode:</strong> most frequent value</li>
-    <li class="small">Grouped formulas shown in original notes; use median for skewed data.</li>
+    <li><strong>Range:</strong> Maximum − Minimum</li>
+    <li><strong>Variance (Sample):</strong></li>
   </ul>
-</div>
-
-<div class="card">
-  <h3>Measures of Dispersion (brief)</h3>
+  <div class="formula">
+s² = Σ(x − x̄)² / (n − 1)
+  </div>
   <ul class="details-list">
-    <li><strong>Range:</strong> max − min</li>
-    <li><strong>Variance (sample):</strong> \(s^2 = \dfrac{\sum (x - \bar{x})^2}{n-1}\)</li>
-    <li><strong>Standard deviation:</strong> \(s = \sqrt{s^2}\)</li>
-    <li><strong>IQR:</strong> Q3 − Q1 (used with box plot)</li>
+    <li><strong>Standard Deviation:</strong></li>
   </ul>
+  <div class="formula">
+s = √s²
+  </div>
+  <p class="small">
+    Example: If variance = 16, standard deviation = 4
+  </p>
 </div>
 
 <div class="card">
   <h3>Shape of Distribution</h3>
   <ul class="details-list">
-    <li><strong>Skewness:</strong> asymmetry (positive = right tail)</li>
-    <li><strong>Kurtosis:</strong> tail heaviness (leptokurtic/platykurtic)</li>
-    <li><strong>Normality:</strong> bell-shaped; many tests and plots check this</li>
+    <li><strong>Symmetric:</strong> Mean = Median = Mode</li>
+    <li><strong>Positively Skewed:</strong> Mean > Median</li>
+    <li><strong>Negatively Skewed:</strong> Mean < Median</li>
   </ul>
 </div>
 
 <div class="card">
-  <h3>Correlation & Association</h3>
-  <p class="small">Measure linear association with Pearson's r; visualize with a scatter plot.</p>
-</div>
-
-<div class="card">
-  <h3>Index Numbers & Time Series (brief)</h3>
-  <ul class="details-list">
-    <li><strong>Index:</strong> relative change from a base period</li>
-    <li><strong>Time series:</strong> trend, seasonality, cyclic patterns</li>
-  </ul>
-</div>
-
-<div class="card">
-  <h3>Graphical Representations (corrected examples)</h3>
-
-  <!-- Histogram -->
-  <div class="graph" aria-label="Histogram example">
-    <strong class="small">Histogram (frequency by class)</strong>
-    <svg viewBox="0 0 700 260" width="100%" height="180" role="img" aria-hidden="false">
-      <!-- axes -->
-      <line x1="60" y1="220" x2="640" y2="220" stroke="#9fb6d0" stroke-width="1"/>
-      <line x1="60" y1="20" x2="60" y2="220" stroke="#9fb6d0" stroke-width="1"/>
-      <!-- bars (accurate spacing) -->
-      <rect x="90" y="150" width="80" height="70" fill="#06b6d4"/>
-      <rect x="190" y="120" width="80" height="100" fill="#7c3aed"/>
-      <rect x="290" y="80" width="80" height="140" fill="#f472b6"/>
-      <rect x="390" y="110" width="80" height="110" fill="#60a5fa"/>
-      <rect x="490" y="170" width="80" height="50" fill="#34d399"/>
-      <!-- labels -->
-      <text x="130" y="235" fill="#cfe8ff" font-size="12">10–19</text>
-      <text x="230" y="235" fill="#cfe8ff" font-size="12">20–29</text>
-      <text x="330" y="235" fill="#cfe8ff" font-size="12">30–39</text>
-      <text x="430" y="235" fill="#cfe8ff" font-size="12">40–49</text>
-      <text x="530" y="235" fill="#cfe8ff" font-size="12">50–59</text>
-      <text x="20" y="40" fill="#9fb6d0" font-size="12">Frequency</text>
-    </svg>
-  </div>
-
-  <!-- Ogive -->
-  <div class="graph" aria-label="Ogive example">
-    <strong class="small">Ogive (cumulative frequency)</strong>
-    <svg viewBox="0 0 700 260" width="100%" height="160">
-      <line x1="60" y1="220" x2="640" y2="220" stroke="#9fb6d0"/>
-      <line x1="60" y1="20" x2="60" y2="220" stroke="#9fb6d0"/>
-      <!-- cumulative points and smooth polyline -->
-      <polyline points="90,200 190,170 290,120 390,90 490,60 590,40" fill="none" stroke="#f472b6" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
-      <text x="20" y="40" fill="#9fb6d0" font-size="12">Cumulative</text>
-      <text x="120" y="235" fill="#cfe8ff" font-size="12">10</text>
-      <text x="220" y="235" fill="#cfe8ff" font-size="12">20</text>
-      <text x="320" y="235" fill="#cfe8ff" font-size="12">30</text>
-      <text x="420" y="235" fill="#cfe8ff" font-size="12">40</text>
-      <text x="520" y="235" fill="#cfe8ff" font-size="12">50</text>
-      <text x="620" y="235" fill="#cfe8ff" font-size="12">60</text>
-    </svg>
-  </div>
-
-  <!-- Box plot -->
-  <div class="graph" aria-label="Box plot example">
-    <strong class="small">Box Plot (five-number summary)</strong>
-    <svg viewBox="0 0 700 120" width="100%" height="80">
-      <line x1="60" y1="60" x2="640" y2="60" stroke="#9fb6d0"/>
-      <!-- whiskers -->
-      <line x1="120" y1="60" x2="200" y2="60" stroke="#cfe8ff" stroke-width="2"/>
-      <line x1="520" y1="60" x2="600" y2="60" stroke="#cfe8ff" stroke-width="2"/>
-      <!-- box -->
-      <rect x="200" y="40" width="320" height="40" fill="#7c3aed" opacity="0.9"/>
-      <!-- median -->
-      <line x1="360" y1="40" x2="360" y2="80" stroke="#020617" stroke-width="3"/>
-      <!-- labels -->
-      <text x="115" y="80" fill="#cfe8ff" font-size="12">Min</text>
-      <text x="195" y="80" fill="#cfe8ff" font-size="12">Q1</text>
-      <text x="350" y="30" fill="#cfe8ff" font-size="12">Median</text>
-      <text x="520" y="80" fill="#cfe8ff" font-size="12">Q3</text>
-      <text x="595" y="80" fill="#cfe8ff" font-size="12">Max</text>
-    </svg>
-  </div>
-
-  <!-- Scatter plot -->
-  <div class="graph" aria-label="Scatter plot example">
-    <strong class="small">Scatter Plot (correlation example)</strong>
-    <svg viewBox="0 0 700 260" width="100%" height="160">
-      <line x1="60" y1="220" x2="640" y2="220" stroke="#9fb6d0"/>
-      <line x1="60" y1="20" x2="60" y2="220" stroke="#9fb6d0"/>
-      <!-- points -->
-      <circle cx="120" cy="200" r="4" fill="#06b6d4"/>
-      <circle cx="170" cy="180" r="4" fill="#06b6d4"/>
-      <circle cx="220" cy="160" r="4" fill="#06b6d4"/>
-      <circle cx="280" cy="140" r="4" fill="#06b6d4"/>
-      <circle cx="340" cy="120" r="4" fill="#06b6d4"/>
-      <circle cx="420" cy="100" r="4" fill="#06b6d4"/>
-      <circle cx="500" cy="80" r="4" fill="#06b6d4"/>
-      <!-- trend line -->
-      <line x1="100" y1="210" x2="560" y2="70" stroke="#f472b6" stroke-width="2" stroke-dasharray="4 3"/>
-      <text x="20" y="40" fill="#9fb6d0" font-size="12">Y</text>
-      <text x="620" y="235" fill="#cfe8ff" font-size="12">X</text>
-    </svg>
-  </div>
-
-  <!-- Pie chart -->
-  <div class="graph" aria-label="Pie chart example">
-    <strong class="small">Pie Chart (categorical share)</strong>
-    <svg viewBox="0 0 300 200" width="100%" height="140">
-      <!-- simple pie using arcs approximated by paths -->
-      <path d="M150 100 L 150 20 A 80 80 0 0 1 230 100 Z" fill="#06b6d4"/>
-      <path d="M150 100 L 230 100 A 80 80 0 0 1 190 170 Z" fill="#7c3aed"/>
-      <path d="M150 100 L 190 170 A 80 80 0 0 1 90 170 Z" fill="#f472b6"/>
-      <path d="M150 100 L 90 170 A 80 80 0 0 1 150 20 Z" fill="#34d399" opacity="0.95"/>
-      <text x="10" y="20" fill="#cfe8ff" font-size="12">A: 30%</text>
-      <text x="10" y="40" fill="#cfe8ff" font-size="12">B: 25%</text>
-      <text x="10" y="60" fill="#cfe8ff" font-size="12">C: 30%</text>
-      <text x="10" y="80" fill="#cfe8ff" font-size="12">D: 15%</text>
-    </svg>
-  </div>
-
-</div>
-
-<div class="card">
-  <h3>Other Brief Topics (quick reference)</h3>
-  <div class="grid">
-    <div>
-      <strong>Percentiles & Quartiles</strong>
-      <p class="small">Divide ordered data into 100 (percentiles) or 4 (quartiles) equal parts.</p>
-    </div>
-    <div>
-      <strong>Stem-and-Leaf</strong>
-      <p class="small">Compact display preserving original data values and distribution shape.</p>
-    </div>
-    <div>
-      <strong>Relative Frequency</strong>
-      <p class="small">Frequency divided by total count; useful for comparisons.</p>
-    </div>
-    <div>
-      <strong>Outliers</strong>
-      <p class="small">Values far from others; detect with IQR or z-scores.</p>
-    </div>
-    <div>
-      <strong>Standard Error</strong>
-      <p class="small">Estimate of sampling variability of a statistic (e.g., mean).</p>
-    </div>
-    <div>
-      <strong>Confidence Interval</strong>
-      <p class="small">Range likely to contain a population parameter with given confidence.</p>
-    </div>
-  </div>
-</div>
-
-<div class="card">
-  <h3>What I Learned in This Chapter</h3>
+  <h3>Correlation</h3>
   <p>
-    Data classification, central tendency, dispersion, distribution shape, correlation, and multiple graphical methods.
-    Use the histogram for distribution, ogive for cumulative frequencies, box plot for spread and outliers, scatter for association, and pie for categorical shares.
+    Correlation measures the strength and direction of linear relationship between two variables.
   </p>
-  <p class="note">Tip: For real datasets, compute numeric summaries (mean, median, SD, IQR) before interpreting graphs.</p>
+  <div class="formula">
+−1 ≤ r ≤ +1
+  </div>
 </div>
 
-<div class="footer">Updated layout and visuals — background color changed to a teal/indigo theme and graphs corrected for clarity.</div>
+<div class="card">
+  <h3>Graphical Representation</h3>
+  <ul class="details-list">
+    <li>Histogram – Frequency distribution</li>
+    <li>Ogive – Cumulative frequency</li>
+    <li>Box Plot – Spread and outliers</li>
+    <li>Scatter Plot – Relationship between variables</li>
+    <li>Pie Chart – Categorical proportions</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>What I Learned</h3>
+  <p>
+    I learned how data is classified, summarized using averages and dispersion,
+    and visually represented using graphs for better interpretation.
+  </p>
+</div>
+
+<div class="footer">
+  Chapter 1 – Description of Data | Linked with index.html
+</div>
 
 </section>
 
 <script>
-/* animated background points (colors tuned to new palette) */
-const c = document.getElementById("statsBG"), x = c.getContext("2d");
+const c = document.getElementById("statsBG"), ctx = c.getContext("2d");
 function resize(){ c.width = innerWidth; c.height = innerHeight; }
 resize(); addEventListener("resize", resize);
-const points = [...Array(80)].map(()=>({
-  x: Math.random()*c.width,
-  y: Math.random()*c.height,
-  vx: (Math.random()-.5)*0.4,
-  vy: (Math.random()-.5)*0.4,
-  r: 1 + Math.random()*2
+
+const pts=[...Array(70)].map(()=>({
+  x:Math.random()*c.width,
+  y:Math.random()*c.height,
+  vx:(Math.random()-.5)*0.4,
+  vy:(Math.random()-.5)*0.4
 }));
+
 (function loop(){
-  x.clearRect(0,0,c.width,c.height);
-  for(let i=0;i<points.length;i++){
-    const p = points[i];
-    for(let j=i+1;j<points.length;j++){
-      const q = points[j];
-      const dx = p.x - q.x, dy = p.y - q.y;
-      const dist = Math.hypot(dx,dy);
-      if(dist < 120){
-        x.strokeStyle = "rgba(124,58,237,0.06)";
-        x.beginPath(); x.moveTo(p.x,p.y); x.lineTo(q.x,q.y); x.stroke();
-      }
-    }
-    p.x += p.vx; p.y += p.vy;
-    if(p.x < 0 || p.x > c.width) p.vx *= -1;
-    if(p.y < 0 || p.y > c.height) p.vy *= -1;
-    x.fillStyle = "rgba(6,182,212,0.9)";
-    x.beginPath(); x.arc(p.x,p.y,p.r,0,Math.PI*2); x.fill();
-  }
+  ctx.clearRect(0,0,c.width,c.height);
+  pts.forEach(p=>{
+    p.x+=p.vx; p.y+=p.vy;
+    if(p.x<0||p.x>c.width)p.vx*=-1;
+    if(p.y<0||p.y>c.height)p.vy*=-1;
+    ctx.fillStyle="rgba(6,182,212,0.8)";
+    ctx.beginPath(); ctx.arc(p.x,p.y,2,0,Math.PI*2); ctx.fill();
+  });
   requestAnimationFrame(loop);
 })();
 </script>
